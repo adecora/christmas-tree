@@ -7,7 +7,7 @@ import fir from './tree.js';
  */
 let lightsInterval;
 function turnOn() {
-    const blinkRate = 750;
+    const blinkRate = 1000;
     const rowsCount = fir.rowsCount;
     const needles = fir.getNeedles();
 
@@ -57,6 +57,10 @@ function blink(rows, needles) {
 
 
 if (module.hot) {
+  module.hot.accept(['./tree.js'], () => {
+    clearInterval(lightsInterval);
+    turnOn();
+  });
   module.hot.accept();
   module.hot.dispose(_data => {
     clearInterval(lightsInterval);

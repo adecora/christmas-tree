@@ -5,7 +5,7 @@ const fir = {
     getNeedles: function() {
         return this.container.getElementsByClassName(NEEDLE_CLASS);
     },
-    rowsCount: 20,
+    rowsCount: 8,
     draw: function() {
         let output = '';
 
@@ -25,8 +25,5 @@ const fir = {
 
 fir.draw();
 
-if (module.hot) {
-  module.hot.accept();
-}
 
 export default fir;
