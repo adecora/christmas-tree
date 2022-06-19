@@ -1,12 +1,10 @@
-import fir from './tree.js';
-
 /**
  * Changes the look of
  * some 'needles' in the tree
  * every 1000ms
  */
 let lightsInterval;
-function turnOn() {
+export function turnOn(fir) {
     const blinkRate = 1000;
     const rowsCount = fir.rowsCount;
     const needles = fir.getNeedles();
@@ -17,7 +15,10 @@ function turnOn() {
     );
 }
 
-turnOn();
+export function restart(fir) {
+  clearInterval(lightsInterval);
+  turnOn(fir);
+}
 
 /*
  * STUFF WE DON'T CARE ABOUT.
@@ -55,13 +56,7 @@ function blink(rows, needles) {
     });
 }
 
-
 if (module.hot) {
-  module.hot.accept(['./tree.js'], () => {
-    clearInterval(lightsInterval);
-    turnOn();
-  });
-  module.hot.accept();
   module.hot.dispose(_data => {
     clearInterval(lightsInterval);
   });

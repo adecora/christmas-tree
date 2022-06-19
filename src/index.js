@@ -1,9 +1,10 @@
-import './tree.js';
-import './lights.js';
+import fir from './tree.js';
+import { turnOn, restart } from './lights.js';
 
-// Parent-accepted modules, the changed module should have and update handler
-// in every branch of its dependency graph.
-// tree.js module is actually imported in lights.js and in index.js
+turnOn(fir);
+
 if (module.hot) {
-  module.hot.accept(['./tree.js']);
+  module.hot.accept(['./tree.js', './lights.js'], () => {
+    restart(fir);
+  });
 }
