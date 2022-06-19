@@ -9,7 +9,7 @@ const fir = {
     draw: function() {
         let output = '';
 
-        for (let i = 1; i < this.rowsCount; i += 1) {
+        for (let i = 0; i < this.rowsCount; i += 1) {
             for (let j = i; j < this.rowsCount; j += 1) {
                 output += '&nbsp;&nbsp;';
             }
@@ -24,5 +24,9 @@ const fir = {
 };
 
 fir.draw();
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 export default fir;
